@@ -1,75 +1,34 @@
-# Nuxt Minimal Starter
+# Explanation of Internal error 500 with @tus/server in Nuxt 3
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## General issue
 
-## Setup
-
-Make sure to install dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+`@tus/server` in Nitro server witing a Nuxt 3 app, deployed to Cloudflare pages, returns error when endpoint requested:
+```
+[nuxt] [request error] [unhandled] [500],Class extends value #<Object> is not a constructor or null in logs
+in production logs
 ```
 
-## Development Server
+![image](https://github.com/user-attachments/assets/efb8aadd-b05c-4e4d-a97d-f8aae6deb744)
 
-Start the development server on `http://localhost:3000`:
+Production logs are not informative
+![image](https://github.com/user-attachments/assets/02ce53cd-90bb-4e57-8091-316658d52887)
 
-```bash
-# npm
-npm run dev
+### Guessing
 
-# pnpm
-pnpm dev
+Probably it just happens because Cloudflare workers don't allow to store files as in classic file system. But the error is not informative and doesn't seem as related to a filesystem issue at all.
 
-# yarn
-yarn dev
+## Additional issue
 
-# bun
-bun run dev
+The client page is not loaded and returns the error
+```
+TypeError: Cannot read properties of undefined (reading 'call')
 ```
 
-## Production
+### Solution
 
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+The reason is `tus-js-client` has to be used only for CSR. If you have
+```ts
+import * as tus from 'tus-js-client`
 ```
+within a component (even with composable), it has to be only a client component. Add a suffix `.client` to the component name to load it only for CSR.
 
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
