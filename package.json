@@ -1,0 +1,36 @@
+{
+  "name": "nuxt-cloudflare-pages-tus-server-issue",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "format": "eslint --fix .",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "latest",
+    "@nuxthub/core": "latest",
+    "@stylistic/eslint-plugin": "latest",
+    "@tus/file-store": "latest",
+    "@tus/server": "latest",
+    "daisyui": "^5.0.0-beta.6",
+    "eslint": "latest",
+    "nuxt": "latest",
+    "tailwindcss": "latest",
+    "tus-js-client": "latest",
+    "typescript": "latest",
+    "vue": "latest",
+    "vue-router": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "latest",
+    "husky": "latest",
+    "vite-plugin-eslint2": "latest"
+  }
+}
