@@ -15,9 +15,6 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   vite: {
     plugins: [tailwindcss()],
-    optimizeDeps: {
-      include: ['tus-js-client'],
-    },
   },
   eslint: {
     checker: true,
