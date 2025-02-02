@@ -9,18 +9,18 @@ export default defineNuxtConfig({
       allowedVideoFormats: ['video/mp4', 'video/quicktime'],
     },
   },
+  build: {
+    transpile: ['tus-js-client'],
+  },
   future: {
     compatibilityVersion: 4,
   },
   compatibilityDate: '2024-11-01',
-  // build: {
-  //   transpile: ['@tus/server'],
-  // },
   vite: {
     plugins: [tailwindcss()],
-  //   optimizeDeps: {
-  //     include: ['@tus/server'],
-  //   },
+    // optimizeDeps: {
+    //   include: ['tus-js-client'],
+    // },
   },
   eslint: {
     checker: true,

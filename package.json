@@ -31,6 +31,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "latest",
     "husky": "latest",
-    "vite-plugin-eslint2": "latest"
+    "vite-plugin-eslint2": "latest",
+    "wrangler": "latest"
   }
 }
