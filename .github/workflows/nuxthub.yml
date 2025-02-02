@@ -27,6 +27,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Run ESLint
+        continue-on-error: false
+        run: npm run lint
+
       - name: Build application
         run: npm run build
 
@@ -34,4 +38,4 @@ jobs:
         uses: nuxt-hub/action@v1
         id: deploy
         with:
-          project-key: nuxt-cloudflare-fgdr
+          project-key: ${{ secrets.NUXT_HUB_PROJECT_KEY }}
